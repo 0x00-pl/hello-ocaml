@@ -99,4 +99,41 @@ print_endline (string_of_bool
                     point2d_Z
                     [Circle {center=point2d_Z; radius=1.}]));;
 
- 
+(*1.5*)
+
+let numbers_can_change = [|1;2;3|];;
+numbers_can_change.(1) = 0;;
+Array.to_list numbers_can_change;;
+
+type mut2d = {
+  mutable x: float;
+  mutable y: float;
+}
+
+let mut2d_create () = {x=0.; y=0.}
+let mut2d_update_x p x = p.x <- x
+let mut2d_update_y p y = p.y <- y
+;;
+
+let ref_x = ref 0;;
+!ref_x;;
+ref_x := !ref_x + 1;;
+
+
+let sum_float l =
+  let s = ref 0. in
+  List.iter (fun a -> s:= !s +. a) l;;
+
+let permute l =
+  let length = Array.length l in
+  for i=0 to length-2 do
+    let j = i + Random.int (length - i) in
+    let oi,oj = l.(i), l.(j) in
+    l.(i) <- oj;
+    l.(j) <- oi
+  done
+;;
+
+
+
+
