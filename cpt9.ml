@@ -10,9 +10,10 @@ module Increment (B : X_int) : X_int = struct
 end
 
 module Increment_include (B: X_int) = struct
-  include B (* does not have B.more ; sad *)
-  let x = B.x + 1
+  include B
+  include Increment(B)
 end
+
 
 module Three : X_int = struct
   let x = 3
@@ -27,9 +28,13 @@ module Four = Increment(Three)
 
 module Four_m = Increment(Three_and_more) (* no member more *)
 module Four_mi = Increment_include(Three_and_more) (* no member more *)
-;;
+module Four_mii = struct
+  include Three_and_more
+  include Increment(Three_and_more)
+end
 
-print_int (Four_mi.x);
+;;
+print_int (Four_mii.x);
 
 ;;
 
@@ -77,7 +82,6 @@ else
   print_int 0
 *)
 
-;;
 
 module type Point2d = sig
   type v
