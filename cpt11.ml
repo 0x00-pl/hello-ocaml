@@ -100,8 +100,8 @@ end = Either
 type ('a, 'b) t_abs = 'a -> 'b
 type (+'a, +'b) t_sum = A of 'a | B of 'b
 type (+'a, +'b) t_mult = 'a * 'b
-type (-'a, +'b) t_dep = 'a -> 'b
-type (-'a, -'b) t_dep2 = 'a -> 'b -> unit
+type (-'a, +'b) t_pow = 'a -> 'b
+type (-'a, -'b) t_pow2 = 'a -> 'b -> unit
 
 ;;
 
