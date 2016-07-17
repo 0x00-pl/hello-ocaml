@@ -1,7 +1,7 @@
 
 module type ty = sig type t end
 
-module Int_ty:ty = struct
+module Int_ty:ty with type t = int = struct
   type t = int
 end
 
@@ -88,7 +88,7 @@ module ShowAst:ast with type 'a v = string = struct
   module APP(A:ty)(B:ty):mapp with type 'a v := 'a v = struct
     type a = A.t
     type b = B.t
-    let app f x = "(" ^ f ^ " " ^ x ^ " )"
+    let app f x = "(" ^ f ^ " " ^ x ^ ")"
   end
   module S(A:ty)(B:ty)(C:ty):ms with type 'a v := 'a v = struct
     type a = ()
@@ -106,8 +106,24 @@ module ShowAst:ast with type 'a v = string = struct
   end
 end
 
+module NackedAst:ast with type 'a v = 'a = struct
+  type 'a v = 'a
+  module APP(A:ty)(B:ty) = struct
+    let app f x = f x
+  end
+  module S(A:ty)(B:ty)(C:ty) = struct
+    let s = (fun x y a -> x a (y a))
+  end
+  module K(A:ty)(B:ty) = struct
+    let k = (fun x y -> x)
+  end
+  module I(A:ty) = struct
+    let i = (fun x -> x)
+  end
+end
 
-module AST(BB:ast)(T:ty):ast = struct
+
+module AST(BB:ast)(T:ty):ast with type 'a v = (T.t->'a) BB.v = struct
   type 'a v = (T.t->'a) BB.v
 
   module APP(A:ty)(B:ty) = struct
@@ -186,4 +202,68 @@ print_endline IMI.i
 print_endline IMS.s
 ;;
 
+module M1(F:ast) = struct
+  module F_APP = F.APP(Int_ty)(Int_ty)
+  module F_I = F.I(Int_ty)
+  let lam f = F_APP.app F_I.i
+  let idk = lam (fun x -> F_APP.app F_I.i x)
+end
 
+module Ms = M1(ShowAst)
+let id_string = "id"
+let mss = Ms.idk "99"
+
+module Mn = M1(NackedAst)
+let msn = Mn.idk 1
+;;
+print_endline (mss);
+print_endline (string_of_int msn)
+;;
+
+module MC(F:ast) = struct
+
+  module I_to_I = struct type t = int->int end
+  module I_to_I_to_I = struct type t = int->int->int end
+  module I_to_I_to_I_to_I = struct type t = int->int->int->int end
+  module II_to_II = struct type t = (int->int)->int->int end
+  module II_to_III = struct type t = (int->int)->int->int->int end
+  module II_to_II_to_II = struct type t = (int->int)->(int->int)->int->int end
+  module F_APP3 = F.APP(I_to_I)(II_to_II)
+  module F_APP2 = F.APP(I_to_I)(I_to_I)
+  module F_APP1 = F.APP(Int_ty)(Int_ty)
+  module F_K = F.K(Int_ty)(Int_ty)
+  module F_K_II = F.K(I_to_I)(I_to_I)
+  module F_K_III = F.K(I_to_I_to_I)(I_to_I)
+  module F_I = F.I(Int_ty)
+  module F_I_II = F.I(I_to_I)
+  module AST_F = AST(F)(I_to_I)
+  module AST_FF = AST(AST_F)(Int_ty)
+  module AST_F_K = AST_F.K(Int_ty)(Int_ty)
+  module AST_FF_APP = AST_FF.APP(Int_ty)(Int_ty)
+  module AST_FF_K = AST_FF.K(Int_ty)(Int_ty)
+  module AST_F_APP1 = AST_F.APP(Int_ty)(Int_ty)
+  module AST_FF_APP1 = AST_FF.APP(Int_ty)(Int_ty)
+  module AST_FF_APP2 = AST_FF.APP(Int_ty)(I_to_I)
+
+  let k_ab ab = AST_FF_APP2.app AST_FF_K.k ab  (* (ii->iii) -> ii -> iii *)
+  let k_a a = F_APP3.app F_K_II.k a
+  let lam1 f = f F_I.i
+  let lam2 f = f F_I_II.i
+  let aa = lam2(fun ab-> lam1(fun a-> AST_FF_APP.app (k_ab ab) (k_a a)))
+
+(*
+   app f x
+   app: (ii->iii) -> (ii->ii) -> (ii->ii)
+*)
+end
+
+module MCs = MC(ShowAst)
+let mcns =  MCs.F_APP1.app (MCs.F_APP2.app MCs.aa "inc") "1"
+
+module MCn = MC(NackedAst)
+let mcnn = MCn.F_APP1.app (MCn.F_APP2.app MCn.aa (fun x->x+1)) 1
+
+;;
+print_endline "mcnn: ";
+print_endline (mcns);
+print_endline (string_of_int mcnn)
