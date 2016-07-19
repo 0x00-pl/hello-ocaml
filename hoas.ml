@@ -221,7 +221,6 @@ print_endline (string_of_int msn)
 ;;
 
 module MC(F:ast) = struct
-
   module I_to_I = struct type t = int->int end
   module I_to_I_to_I = struct type t = int->int->int end
   module I_to_I_to_I_to_I = struct type t = int->int->int->int end
@@ -245,25 +244,83 @@ module MC(F:ast) = struct
   module AST_FF_APP1 = AST_FF.APP(Int_ty)(Int_ty)
   module AST_FF_APP2 = AST_FF.APP(Int_ty)(I_to_I)
 
-  let k_ab ab = AST_FF_APP2.app AST_FF_K.k ab  (* (ii->iii) -> ii -> iii *)
+  let k_ab ab = AST_FF_APP2.app AST_FF_K.k ab
   let k_a a = F_APP3.app F_K_II.k a
   let lam1 f = f F_I.i
   let lam2 f = f F_I_II.i
-  let aa = lam2(fun ab-> lam1(fun a-> AST_FF_APP.app (k_ab ab) (k_a a)))
 
-(*
-   app f x
-   app: (ii->iii) -> (ii->ii) -> (ii->ii)
-*)
+  let aa = lam2(fun ab-> lam1(fun a-> AST_FF_APP.app (k_ab ab) (k_a a)))
 end
 
 module MCs = MC(ShowAst)
 let mcns =  MCs.F_APP1.app (MCs.F_APP2.app MCs.aa "inc") "1"
 
 module MCn = MC(NackedAst)
-let mcnn = MCn.F_APP1.app (MCn.F_APP2.app MCn.aa (fun x->x+1)) 1
+let inc x = x + 1
+let mcnn = MCn.F_APP1.app (MCn.F_APP2.app MCn.aa inc) 1
 
 ;;
 print_endline "mcnn: ";
 print_endline (mcns);
 print_endline (string_of_int mcnn)
+;;
+
+
+module MC3(F:ast) = struct
+  module I = struct type t = int end
+  module II = struct type t = int->int end
+  module III = struct type t = int->int->int end
+  module IIII = struct type t = int->int->int->int end
+  module II_II = struct type t = (int->int)->int->int end
+  module II_III = struct type t = (int->int)->int->int->int end
+  module III_III = struct type t = (int->int->int)->int->int->int end
+  module II_II_II = struct type t = (int->int)->(int->int)->int->int end
+  module SF = AST(F)(III)
+  module SSF = AST(SF)(I)
+  module SSSF = AST(SSF)(I)
+  module APP_I_I = F.APP(I)(I)
+  module APP_I_II = F.APP(I)(II)
+  module APP_III_III = F.APP(III)(III)
+  module SAPP_III_IIII = SF.APP(III)(IIII)
+  module SSAPP_I_II = SSF.APP(I)(II)
+  module SSAPP_III_IIII = SSF.APP(III)(IIII)
+  module SSSAPP_I_I = SSSF.APP(I)(I)
+  module SSSAPP_I_II = SSSF.APP(I)(II)
+  module SK_III_I = SF.K(III)(I)
+  module SSK_I_I = SSF.K(I)(I)
+  module SSK_III_I = SSF.K(III)(I)
+  module I_III = F.I(III)
+  module SI_I = SF.I(I)
+  module SSI_I = SSF.I(I)
+
+  let id x = x
+  let lam1 f = f I_III.i
+  let lam2 f = f SI_I.i
+  let lam3 f = f SSI_I.i
+  let k_abc_1 (abc:III.t SF.v) : III.t SSF.v =
+    SAPP_III_IIII.app SK_III_I.k abc
+  let k_abc (abc:III.t SF.v) : III.t SSSF.v =
+    SSAPP_III_IIII.app SSK_III_I.k (k_abc_1 abc)
+  let k_a a = a
+  let k_b (b:I.t SSF.v): I.t SSSF.v =
+    SSAPP_I_II.app SSK_I_I.k b
+  let cc = lam1(fun abc-> lam2(fun b-> lam3(fun a->
+      SSSAPP_I_I.app (SSSAPP_I_II.app (k_abc abc) (a)) (k_b b))))
+end
+
+
+module MC3s = MC3(ShowAst)
+let mc3s = MC3s.APP_I_I.app (MC3s.APP_I_II.app (MC3s.APP_III_III.app
+                                            MC3s.cc "-") "1") "2"
+
+module MC3n = MC3(NackedAst)
+let minus x y = x - y
+let mc3n = MC3n.APP_I_I.app (MC3n.APP_I_II.app (MC3n.APP_III_III.app
+                                            MC3n.cc minus) 1) 2
+
+;;
+print_newline ();
+print_newline ();
+print_endline ("mc3s: " ^ (mc3s));
+print_endline ("mc3n: " ^ (string_of_int mc3n))
+;;
