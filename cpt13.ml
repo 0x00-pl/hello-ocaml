@@ -89,82 +89,8 @@ module B_nicked_example = struct
 end
 
 (*
-module B_opt
-  : B with type 't fc = 't option = struct
-  type 't fc = 't option
-  let app f x =
-    match f,x with
-    | None, _ | _,None -> None
-    | Some f', Some x'-> Some (f' x')
-
-  let lam (lm: ('a->'a) fc -> ('a->'b) fc) = lm None
-end
-
-module B_opt_example = struct
-  open B_opt
-  let u = function
-    | None -> None
-    | Some x -> Some (fun y -> x)
-
-  let print_int_opt o=
-    print_endline
-      (match o with
-       | None -> "None"
-       | Some v -> string_of_int v)
-
-  let arg32:(int->int->int) fc =
-    lam (fun (x:('a->'a) fc) -> (lam (fun y -> x)))
-  let ret32 = app (app arg32 (Some 0)) (Some 1)
-  ;;
-  print_int_opt ret32
-end *)
-(*
-open B_opt
-let arg32opt =
-  lam (fun (f:(int->int) option) -> u_opt (app f (Some 0)))
-let ret32opt =
-  app (app arg32opt (Some 9)) (Some 8)
-
-print_int_opt ret32opt
-
-
-module B_opt
-  : B with
-    type 't fc = 't option = struct
-  type 't fc = 't option
-  let app ff fa =
-    match ff,fa with
-    | None,_ -> None
-    | _,None -> None
-    | Some a, Some b -> Some (a b)
-
-  let lam (lm : ('a->'a) fc -> ('a->'b) fc) =
-    lm (Some id)
-end
-
-let oadd x = function
-  | None -> None
-  | Some y ->
-    match x with
-    | None -> None
-    | Some x -> Some (x+y)
-
-let o_float_of_int = function
-  | None -> None
-  | Some i -> Some (float_of_int i)
-
-
-open B_opt
-
-let f_ : (int->float) fc = Some float_of_int
-let exp_f = lam (fun x -> (app f_ x))
-let exp_r = app exp_f (Some 0)
-;;
-match exp with None -> () | Some i -> print_int i
-*)
-
-
-
+   ABORT
+   *)
 
 
 
