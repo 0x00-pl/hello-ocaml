@@ -1,0 +1,184 @@
+### Starting build.
+# Target: cpt15.ml.depends, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:cpt15.ml, ocaml, ocamldep, quiet, short_paths, thread, traverse }
+ocamlfind ocamldep -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -modules cpt15.ml > cpt15.ml.depends
+# Target: cpt15_j.mli.depends, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mli, file:cpt15_j.mli, ocaml, ocamldep, quiet, short_paths, thread, traverse }
+ocamlfind ocamldep -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -modules cpt15_j.mli > cpt15_j.mli.depends # cached
+# Target: cpt15_t.mli.depends, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mli, file:cpt15_t.mli, ocaml, ocamldep, quiet, short_paths, thread, traverse }
+ocamlfind ocamldep -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -modules cpt15_t.mli > cpt15_t.mli.depends # cached
+# Target: cpt15_t.cmi, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:mli, file:cpt15_t.mli, interf, ocaml, quiet, short_paths, thread, traverse }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -o cpt15_t.cmi cpt15_t.mli # cached
+# Target: cpt15_j.cmi, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:mli, file:cpt15_j.mli, interf, ocaml, quiet, short_paths, thread, traverse }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -o cpt15_j.cmi cpt15_j.mli # cached
+# Target: cpt15.cmo, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:cpt15.cmo, file:cpt15.ml, implem, ocaml, quiet, short_paths, thread, traverse }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -o cpt15.cmo cpt15.ml
++ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -o cpt15.cmo cpt15.ml
+File "cpt15.ml", line 4, characters 14-15:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 5, characters 3-4:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 6, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 7, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 8, characters 50-51:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 9, characters 62-63:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 10, characters 64-65:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 11, characters 62-63:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 12, characters 64-65:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 13, characters 75-76:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 14, characters 89-90:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 15, characters 72-73:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 16, characters 44-45:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 17, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 18, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 19, characters 40-41:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 20, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 21, characters 36-37:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 22, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 23, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 24, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 25, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 26, characters 47-48:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 27, characters 43-44:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 28, characters 29-30:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 29, characters 31-32:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 30, characters 31-32:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 31, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 32, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 33, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 34, characters 44-45:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 35, characters 13-14:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 36, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 37, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 38, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 39, characters 4-5:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 40, characters 44-45:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 41, characters 47-48:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 42, characters 1-2:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+# Target: cpt15_j.ml.depends, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:cpt15_j.ml, ocaml, ocamldep, quiet, short_paths, thread, traverse }
+ocamlfind ocamldep -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -modules cpt15_j.ml > cpt15_j.ml.depends # cached
+# Target: cpt15_t.ml.depends, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:cpt15_t.ml, ocaml, ocamldep, quiet, short_paths, thread, traverse }
+ocamlfind ocamldep -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -modules cpt15_t.ml > cpt15_t.ml.depends # cached
+# Target: cpt15_t.cmx, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, compile, debug, extension:cmx, extension:ml, file:cpt15_t.cmx, file:cpt15_t.ml, implem, native, ocaml, quiet, short_paths, thread, traverse }
+ocamlfind ocamlopt -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -o cpt15_t.cmx cpt15_t.ml # cached
+# Target: cpt15_j.cmx, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, compile, debug, extension:cmx, extension:ml, file:cpt15_j.cmx, file:cpt15_j.ml, implem, native, ocaml, quiet, short_paths, thread, traverse }
+ocamlfind ocamlopt -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -o cpt15_j.cmx cpt15_j.ml # cached
+# Target: cpt15.cmx, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, compile, debug, extension:cmx, extension:ml, file:cpt15.cmx, file:cpt15.ml, implem, native, ocaml, quiet, short_paths, thread, traverse }
+ocamlfind ocamlopt -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -o cpt15.cmx cpt15.ml
++ ocamlfind ocamlopt -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package yojson,atdgen -package core -ppx 'ppx-jane -as-ppx' -o cpt15.cmx cpt15.ml
+File "cpt15.ml", line 4, characters 14-15:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 5, characters 3-4:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 6, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 7, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 8, characters 50-51:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 9, characters 62-63:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 10, characters 64-65:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 11, characters 62-63:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 12, characters 64-65:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 13, characters 75-76:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 14, characters 89-90:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 15, characters 72-73:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 16, characters 44-45:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 17, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 18, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 19, characters 40-41:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 20, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 21, characters 36-37:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 22, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 23, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 24, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 25, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 26, characters 47-48:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 27, characters 43-44:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 28, characters 29-30:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 29, characters 31-32:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 30, characters 31-32:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 31, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 32, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 33, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 34, characters 44-45:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 35, characters 13-14:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 36, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 37, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 38, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 39, characters 4-5:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 40, characters 44-45:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 41, characters 47-48:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "cpt15.ml", line 42, characters 1-2:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+# Target: cpt15.native, tags: { package(core), package(yojson,atdgen), ppx(ppx-jane -as-ppx), bin_annot, debug, dont_link_with, extension:native, file:cpt15.native, link, native, ocaml, program, quiet, short_paths, thread, traverse }
+ocamlfind ocamlopt -linkpkg -g -thread -package yojson,atdgen -package core cpt15_t.cmx cpt15_j.cmx cpt15.cmx -o cpt15.native
+# Compilation successful.
