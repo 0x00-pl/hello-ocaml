@@ -56,3 +56,9 @@ upon;;
 let () =
    Core.Std.never_returns (Scheduler.go ());;
 
+let (r,w) = Pipe.create ();;
+let deferr_w = Pipe.write w "hello";;
+Pipe.read r;;
+deferr_w;;
+
+Pipe.transfer;;
