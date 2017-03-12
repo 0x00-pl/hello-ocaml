@@ -35,24 +35,57 @@ let command =
     do_hash
 
 let f () =
-  (* TODO: cannt handle exception in Command.run *)
+  (* cannt handle exception in Command.run *)
+  (* because it's exit 1 *)
   Command.run
     ~version:"0.1"
     ~build_info:"RWO"
     command
 
-let _ = f ()
+let regular_file =
+  Command.Arg_type.create
+    (fun filename ->
+       match Sys.is_file ~follow_symlinks:true filename with
+       | `Yes -> filename
+       | `No | `Unknown ->
+         eprintf "'%s' is not a regular file.\n%!" filename;
+         exit 1)
+
+let command_1 =
+  Command.basic
+    ~summary:"print MD5 of file."
+    ~readme:(fun () -> "this line is more info of MD5 with file type check and this command.")
+    Command.Spec.(empty +> anon ("filename" %: regular_file))
+    do_hash
 
 
+let command_2 =
+  Command.basic
+    ~summary:"print MD5 of file."
+    ~readme:(fun () -> "this line is more info of MD5 with file type check and this command.")
+    Command.Spec.(empty +> anon (maybe ("filename" %: regular_file)))
+    (fun filename_option () -> match filename_option with
+       | None -> do_hash "stdin" ()
+       | Some filename -> do_hash filename ())
 
 
+let command_3_echo =
+  Command.basic
+    "echo argv"
+    Command.Spec.(empty +> anon (sequence ("argv" %: string)))
+    (fun l () -> l |> String.concat ~sep:" " |> print_endline)
 
-
-
-
-
-
-
-
-
+let command_4_echo =
+  Command.basic
+    "echo argv"
+    Command.Spec.(
+      empty
+      +> flag "-v" no_arg ~doc:"show version."
+      +> anon (sequence ("argv" %: string))
+    )
+    (fun show_version l () ->
+       if show_version then
+         print_endline "version 0.1"
+       else
+         l |> String.concat ~sep:" " |> print_endline)
 
