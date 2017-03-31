@@ -1,0 +1,3 @@
+#coqide.ml
+
+fun sn -> sn.coqops#process_next_phrase; if sn.proof#goals = None
